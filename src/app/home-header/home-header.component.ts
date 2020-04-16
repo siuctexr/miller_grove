@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { InteractiveTourComponent } from '../interactive-tour/interactive-tour.component'
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-home-header',
@@ -10,7 +11,7 @@ import { InteractiveTourComponent } from '../interactive-tour/interactive-tour.c
 })
 export class HomeHeaderComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -21,6 +22,10 @@ export class HomeHeaderComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  navigate(route) {
+    this.router.navigate([route]);
   }
 
 }

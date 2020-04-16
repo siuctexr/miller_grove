@@ -1,0 +1,48 @@
+<div class="container">
+  <div class=" title-div row">
+    <div class="col">
+      <h2 mat-dialog-title>Gallery</h2>
+    </div>
+
+    <div class="col button-holder">
+      <a mat-mini-fab color="primary" aria-label="back" routerLink="/home" routerLinkActive="active" title="Back">
+        <mat-icon>keyboard_arrow_left</mat-icon>
+      </a>
+    </div>
+  </div>
+
+  <div class="sketchfab-embed-wrapper">
+    <iframe title="A 3D model" height="480" [src]="src" frameborder="0" allow="autoplay; fullscreen; vr"
+      mozallowfullscreen="true" webkitallowfullscreen="true" style="width: 100%;"></iframe>
+
+  </div>
+
+  <div class="row">
+    <div class="col" style="text-align:left;">
+      <button mat-stroked-button color="primary" (click)="previous()">Previous</button>
+
+    </div>
+
+    <div class="col" style="text-align: center;">
+      <h2>{{selectedItem.name}}</h2>
+    </div>
+
+    <div class="col" style="text-align:right;">
+      <button mat-stroked-button color="primary" (click)="next()">Next</button>
+
+    </div>
+  </div>
+
+  <div class="row my-background">
+    <div class="col">
+      <p class="detail">
+        The text details goes here.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+        laborum.
+      </p>
+    </div>
+  </div>
+</div>

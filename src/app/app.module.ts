@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
+import { NgModule, Injector } from '@angular/core';
+import { createCustomElement } from '@angular/elements';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +19,13 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list'
 
+
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { TourMapComponent } from './tour-map/tour-map.component';
+import { MarkerPopupComponent } from './marker-popup/marker-popup.component';
+import { LeafletMapService } from './leaflet.service';
+import { GalleryComponent } from './gallery/gallery.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +33,10 @@ import { MatListModule } from '@angular/material/list'
     NavBarTopComponent,
     HomeHeaderComponent,
     InteractiveTourComponent,
-    MainNavComponent
+    MainNavComponent,
+    TourMapComponent,
+    MarkerPopupComponent,
+    GalleryComponent
   ],
   imports: [
     BrowserModule,
@@ -38,9 +48,18 @@ import { MatListModule } from '@angular/material/list'
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    LeafletModule.forRoot()
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [LeafletMapService],
+  bootstrap: [AppComponent],
+  entryComponents: [MarkerPopupComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  constructor(private injector: Injector) {
+    const PopupElement = createCustomElement(MarkerPopupComponent, { injector });
+    // Register the custom element with the browser.
+    customElements.define('popup-element', PopupElement);
+  }
+}

@@ -1,0 +1,16 @@
+<div class="container">
+  <div class=" title-div row">
+    <div class="col">
+      <h2 mat-dialog-title>Interactive Tour</h2>
+    </div>
+
+    <div class="col button-holder">
+      <a mat-mini-fab color="primary" aria-label="back" routerLink="/home" routerLinkActive="active" title="Back">
+        <mat-icon>keyboard_arrow_left</mat-icon>
+      </a>
+    </div>
+  </div>
+  <p>Click on the markers on the map to view information and start 360 interactive tour</p>
+  <div class="map" leaflet [leafletOptions]="options" (leafletMapReady)="onMapReady($event)">
+  </div>
+</div>

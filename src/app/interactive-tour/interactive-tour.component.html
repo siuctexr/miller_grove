@@ -1,11 +1,20 @@
-<h2 mat-dialog-title>Virtual Tour</h2>
-<mat-dialog-content class="mat-typography">
+<div class="container">
+  <div class=" title-div row">
+    <div class="col">
+      <h2 mat-dialog-title>Virtual Tour</h2>
+    </div>
+
+    <div class="col button-holder">
+      <a mat-mini-fab color="primary" aria-label="back" routerLink="/map" routerLinkActive="active" title="Back">
+        <mat-icon>keyboard_arrow_left</mat-icon>
+      </a>
+    </div>
+  </div>
+  <p>Tour info text here..</p>
   <div class="iframe-div">
     <iframe src="https://www.theasys.io/viewer/MWNwVVTXzzC3cjYWRxUTJ6WeBpYct6" allowfullscreen="true" frameborder="0"
-      scrolling="no" allow="vr;gyroscope;accelerometer" height="450" style="width:100%;border:none;"></iframe>
+      scrolling="no" allow="vr;gyroscope;accelerometer" height="600" style="width:100%;border:none;"></iframe>
   </div>
 
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Close</button>
-</mat-dialog-actions>
+
+</div>

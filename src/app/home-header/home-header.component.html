@@ -41,13 +41,13 @@
   <div class="button-container">
     <div class="row ">
       <div class="col">
-        <button mat-raised-button class="button-list" (click)="openDialog()">
+        <button mat-raised-button class="button-list" (click)="navigate('/map')">
           <mat-icon>360</mat-icon>Interactive Tours
         </button>
         <button mat-raised-button class="button-list">
           <mat-icon>landscape</mat-icon>AR View
         </button>
-        <button mat-raised-button class="button-list">
+        <button mat-raised-button class="button-list" (click)="navigate('/gallery')">
           <mat-icon>photo_library</mat-icon>Gallery
         </button>
         <button mat-raised-button class="button-list">
