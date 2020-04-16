@@ -9,20 +9,36 @@ import { MainMenuComponent } from './main-menu/main-menu.component';
 import { NavBarTopComponent } from './nav-bar-top/nav-bar-top.component';
 import { HomeHeaderComponent } from './home-header/home-header.component';
 
-import { MaterialModule } from './material/material.module'
+import { MaterialModule } from './material/material.module';
+import { InteractiveTourComponent } from './interactive-tour/interactive-tour.component';
+import { MainNavComponent } from './main-nav/main-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list'
 
 @NgModule({
   declarations: [
     AppComponent,
     MainMenuComponent,
     NavBarTopComponent,
-    HomeHeaderComponent
+    HomeHeaderComponent,
+    InteractiveTourComponent,
+    MainNavComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
