@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+
 import { NgModule, Injector } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 
@@ -27,6 +28,8 @@ import { LeafletMapService } from './leaflet.service';
 import { GalleryComponent } from './gallery/gallery.component';
 import { WalkThroughComponent } from './walk-through/walk-through.component';
 
+import { PlacesService } from './services/places.service'
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +47,7 @@ import { WalkThroughComponent } from './walk-through/walk-through.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MaterialModule,
     LayoutModule,
     MatToolbarModule,
@@ -53,7 +57,7 @@ import { WalkThroughComponent } from './walk-through/walk-through.component';
     MatListModule,
     LeafletModule.forRoot()
   ],
-  providers: [LeafletMapService],
+  providers: [LeafletMapService, HttpClient, PlacesService],
   bootstrap: [AppComponent],
   entryComponents: [MarkerPopupComponent]
 })

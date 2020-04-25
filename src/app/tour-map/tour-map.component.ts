@@ -9,7 +9,8 @@ import { NgElement, WithProperties } from '@angular/elements';
 import { MarkerPopupComponent } from '../marker-popup/marker-popup.component';
 
 import { Location } from '@angular/common';
-
+import { PlacesService } from '../services/places.service';
+import { Place } from '../models/place';
 @Component({
   selector: 'app-tour-map',
   templateUrl: './tour-map.component.html',
@@ -17,36 +18,45 @@ import { Location } from '@angular/common';
 })
 export class TourMapComponent implements OnInit {
 
+  map: L.Map;
+  initialZoom = 15;
+  places: Place[];
+
   options = {
     layers: [
-      L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '...' })
+      L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+        maxZoom: 18,
+        subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+      })
+      // L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '...' })
     ],
-    zoom: 12,
-    center: L.latLng(37.57212630857369, -88.61823227881492)
+    zoom: this.initialZoom,
+    center: L.latLng(37.49845600, -88.63340000)
   };
 
-  markers: Layer[] = [];
 
-  constructor(public _leafletSvc: LeafletMapService, private location: Location) { }
+
+  markers: Layer[] = [];
+  constructor(public _leafletSvc: LeafletMapService, private location: Location, private placesService: PlacesService) { }
 
   ngOnInit(): void {
-    const newMarker = marker(
-      [37.498993 + 0.1 * (Math.random() - 0.5), -88.8723997 + 0.1 * (Math.random() - 0.5)],
-      {
-        icon: icon({
-          iconSize: [25, 41],
-          iconAnchor: [13, 41],
-          iconUrl: 'assets/marker-icon.png',
-          shadowUrl: 'assets/marker-shadow.png'
-        })
-      }
-    );
 
-    // .bindPopup(lr => {
-    //   const popupEl: NgElement & WithProperties<MarkerPopupComponent> = document.createElement('popup-element') as any;
-    // });
 
-    this.markers.push(newMarker);
+    this.placesService.getPlaces().subscribe(places => {
+      this.places = places;
+    });
+
+
+  }
+
+  resetMap() {
+
+    this.map.flyTo(L.latLng(37.49845600, -88.63340000), this.initialZoom, {
+      animate: true,
+      duration: 1 // in seconds
+    });
+    // this.map.panTo(L.latLng(37.49845600, -88.63340000)).setZoom(this.initialZoom);
+    // this.map.setZoom(this.initialZoom);
   }
 
   goBack() {
@@ -55,72 +65,21 @@ export class TourMapComponent implements OnInit {
 
   public onMapReady(map: L.Map) {
 
-    console.log('Hey map ready called');
-    // map is now loaded, add custom controls, access the map directly here
-    // let popup = this.createPopupComponentWithMessage('Test popup!');
+    this.map = map;
+    const markers = [];
 
-    // const markera = new L.CircleMarker(L.latLng(37.498993 + 0.1 * (Math.random() - 0.5), -88.8723997 + 0.1 * (Math.random() - 0.5)), {
-    //   color: 'green',
-    //   radius: 1,
-    // });
+    this.places.forEach(el => {
+      markers.push(this.initializeMarker(el.latitude, el.longitude, el.icon, el.name, el.id));
+    });
 
-    const markera = marker(
-      [37.57212630857369 + 0.1 * (Math.random() - 0.5), -88.61823227881492 + 0.1 * (Math.random() - 0.5)],
-      {
-        icon: icon({
-          iconSize: [35, 51],
-          iconAnchor: [13, 41],
-          iconUrl: 'assets/marker-icon.png',
-          shadowUrl: 'assets/marker-shadow.png'
-        })
-      }
-    );
-    markera.bindPopup(fl => this.createPopupComponentWithMessage('Site 1'));
-    markera.addTo(map);
-
-    const markerb = marker(
-      [37.57212630857369 + 0.1 * (Math.random() - 0.5), -88.61823227881492 + 0.1 * (Math.random() - 0.5)],
-      {
-        icon: icon({
-          iconSize: [35, 51],
-          iconAnchor: [13, 41],
-          iconUrl: 'assets/marker-icon.png',
-          shadowUrl: 'assets/marker-shadow.png'
-        })
-      }
-    );
-    markerb.bindPopup(fl => this.createPopupComponentWithMessage('Site 2'));
-    markerb.addTo(map);
-
-    const markerc = marker(
-      [37.57212630857369 + 0.1 * (Math.random() - 0.5), -88.61823227881492 + 0.1 * (Math.random() - 0.5)],
-      {
-        icon: icon({
-          iconSize: [35, 51],
-          iconAnchor: [13, 41],
-          iconUrl: 'assets/marker-icon.png',
-          shadowUrl: 'assets/marker-shadow.png'
-        })
-      }
-    );
-    markerc.bindPopup(fl => this.createPopupComponentWithMessage('Site 3'));
-    markerc.addTo(map);
-
-    const markerd = marker(
-      [37.57212630857369 + 0.1 * (Math.random() - 0.5), -88.61823227881492 + 0.1 * (Math.random() - 0.5)],
-      {
-        icon: icon({
-          iconSize: [35, 51],
-          iconAnchor: [13, 41],
-          iconUrl: 'assets/marker-icon.png',
-          shadowUrl: 'assets/marker-shadow.png'
-        })
-      }
-    );
-    markerd.bindPopup(fl => this.createPopupComponentWithMessage('Site 4'));
-    markerd.addTo(map);
+    markers.forEach(m => {
+      m.marker.bindPopup(fl => this.createPopupComponentWithMessage(m.placeName));
+      m.marker.addTo(map);
+    });
 
   }
+
+
 
   public createPopupComponentWithMessage(message: any) {
     const popupEl: NgElement & WithProperties<MarkerPopupComponent> = document.createElement('popup-element') as any;
@@ -132,4 +91,20 @@ export class TourMapComponent implements OnInit {
     return popupEl;
   }
 
+  public initializeMarker(lat: number, long: number, iconImage: string, name: string, id: number) {
+
+    const markera = marker(
+      [lat, long],
+      {
+        icon: icon({
+          iconSize: [35, 51],
+          iconAnchor: [13, 41],
+          iconUrl: `assets/icons/${iconImage}`,
+          shadowUrl: 'assets/marker-shadow.png'
+        })
+      }
+    );
+
+    return { marker: markera, placeName: name, id };
+  }
 }
