@@ -5,6 +5,7 @@ import { TourMapComponent } from './tour-map/tour-map.component';
 import { InteractiveTourComponent } from './interactive-tour/interactive-tour.component';
 import { GalleryComponent } from './gallery/gallery.component';
 
+import { WalkThroughComponent } from './walk-through/walk-through.component';
 
 const routes: Routes = [
   { path: '', component: HomeHeaderComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'map', component: TourMapComponent },
   { path: 'tour', component: InteractiveTourComponent },
   { path: 'gallery', component: GalleryComponent },
+  { path: 'walkthrough', component: WalkThroughComponent }
 
 ];
 

@@ -25,6 +25,7 @@ import { TourMapComponent } from './tour-map/tour-map.component';
 import { MarkerPopupComponent } from './marker-popup/marker-popup.component';
 import { LeafletMapService } from './leaflet.service';
 import { GalleryComponent } from './gallery/gallery.component';
+import { WalkThroughComponent } from './walk-through/walk-through.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { GalleryComponent } from './gallery/gallery.component';
     MainNavComponent,
     TourMapComponent,
     MarkerPopupComponent,
-    GalleryComponent
+    GalleryComponent,
+    WalkThroughComponent
   ],
   imports: [
     BrowserModule,

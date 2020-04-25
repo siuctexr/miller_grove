@@ -34,9 +34,13 @@
             ],
             "styles": [
               "src/styles.scss",
-              "./node_modules/leaflet/dist/leaflet.css"
+              "./node_modules/leaflet/dist/leaflet.css",
+              "src/assets/unity/TemplateData/style.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/unity/TemplateData/UnityProgress.js",
+              "src/assets/unity/Build/UnityLoader.js"
+            ]
           },
           "configurations": {
             "production": {
