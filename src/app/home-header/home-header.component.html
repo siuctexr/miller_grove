@@ -55,9 +55,11 @@
           <mat-icon>photo_library</mat-icon>Gallery
         </button>
 
-        <a mat-raised-button class="button-list" href="https://siuctexr.github.io/mg/quiz/index.html" target="_blank">
+        <button mat-raised-button class="button-list" (click)="navigate('/quiz')">
           <mat-icon>done_all</mat-icon>Quiz
-        </a>
+        </button>
+
+
 
         <!-- <button mat-raised-button class="button-list">
           <mat-icon>note</mat-icon>Credits

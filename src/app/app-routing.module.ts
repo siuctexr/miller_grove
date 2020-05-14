@@ -7,6 +7,7 @@ import { GalleryComponent } from './gallery/gallery.component';
 
 import { WalkThroughComponent } from './walk-through/walk-through.component';
 import { VisualNarrativeComponent } from './visual-narrative/visual-narrative.component';
+import { QuizComponent } from './quiz/quiz.component';
 
 const routes: Routes = [
   { path: '', component: HomeHeaderComponent },
@@ -16,7 +17,7 @@ const routes: Routes = [
   { path: 'gallery', component: GalleryComponent },
   { path: 'walkthrough', component: WalkThroughComponent },
   { path: 'visualnarrative', component: VisualNarrativeComponent },
-
+  { path: 'quiz', component: QuizComponent }
 ];
 
 @NgModule({

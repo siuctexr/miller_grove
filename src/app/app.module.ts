@@ -6,8 +6,6 @@ import { createCustomElement } from '@angular/elements';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MainMenuComponent } from './main-menu/main-menu.component';
-import { NavBarTopComponent } from './nav-bar-top/nav-bar-top.component';
 import { HomeHeaderComponent } from './home-header/home-header.component';
 
 import { MaterialModule } from './material/material.module';
@@ -34,12 +32,12 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgxGalleryModule } from 'ngx-gallery-9';
 import { VisualNarrativeComponent } from './visual-narrative/visual-narrative.component';
 import { FooterComponent } from './footer/footer.component';
+import { AboutComponent } from './about/about.component';
+import { QuizComponent } from './quiz/quiz.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainMenuComponent,
-    NavBarTopComponent,
     HomeHeaderComponent,
     InteractiveTourComponent,
     MainNavComponent,
@@ -48,7 +46,9 @@ import { FooterComponent } from './footer/footer.component';
     GalleryComponent,
     WalkThroughComponent,
     VisualNarrativeComponent,
-    FooterComponent
+    FooterComponent,
+    AboutComponent,
+    QuizComponent
   ],
   imports: [
     BrowserModule,
