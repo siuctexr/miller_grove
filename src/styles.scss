@@ -51,3 +51,20 @@ body {
 .title-div {
   padding-top: 5px
 }
+
+
+
+.mat-sidenav-container,
+.mat-sidenav-content,
+.mat-tab-body-content {
+  transform: none !important;
+}
+
+
+.footer {
+  // position: absolute;
+  // bottom: 0;
+  width: 100%;
+  background-color: #ffffff;
+  text-align: center;
+}

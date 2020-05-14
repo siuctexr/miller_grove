@@ -30,6 +30,10 @@ import { WalkThroughComponent } from './walk-through/walk-through.component';
 
 import { PlacesService } from './services/places.service'
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+
+import { NgxGalleryModule } from 'ngx-gallery-9';
+import { VisualNarrativeComponent } from './visual-narrative/visual-narrative.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +45,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     TourMapComponent,
     MarkerPopupComponent,
     GalleryComponent,
-    WalkThroughComponent
+    WalkThroughComponent,
+    VisualNarrativeComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +60,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    LeafletModule.forRoot()
+    LeafletModule.forRoot(),
+    NgxGalleryModule
   ],
   providers: [LeafletMapService, HttpClient, PlacesService],
   bootstrap: [AppComponent],

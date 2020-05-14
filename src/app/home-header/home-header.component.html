@@ -41,8 +41,12 @@
   <div class="button-container">
     <div class="row ">
       <div class="col">
+
+        <button mat-raised-button class="button-list" (click)="navigate('/visualnarrative')">
+          <mat-icon>landscape</mat-icon>Visual Narrative
+        </button>
         <button mat-raised-button class="button-list" (click)="navigate('/map')">
-          <mat-icon>360</mat-icon>Interactive Tours
+          <mat-icon>360</mat-icon> 360° Virtual Tours
         </button>
         <button mat-raised-button class="button-list" (click)="navigate('/walkthrough')">
           <mat-icon>landscape</mat-icon>Walk Through
@@ -50,19 +54,22 @@
         <button mat-raised-button class="button-list" (click)="navigate('/gallery')">
           <mat-icon>photo_library</mat-icon>Gallery
         </button>
-        <button mat-raised-button class="button-list">
+
+
+
+        <a mat-raised-button class="button-list" href="https://bijayraj.github.io/quiz/index.html" target="_blank">
+          <mat-icon>done_all</mat-icon>Quiz
+        </a>
+
+        <!-- <button mat-raised-button class="button-list">
           <mat-icon>note</mat-icon>Credits
-        </button>
+        </button> -->
 
       </div>
 
     </div>
   </div>
-  <!-- <footer class="footer">
-    <div class="container">
-      <span class="text-muted">Created at SIU Center for Teaching Excellence</span>
-    </div>
-  </footer> -->
+
 
 </section>
 

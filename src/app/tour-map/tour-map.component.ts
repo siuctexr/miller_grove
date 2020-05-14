@@ -81,11 +81,13 @@ export class TourMapComponent implements OnInit {
 
 
 
-  public createPopupComponentWithMessage(message: any) {
+  public createPopupComponentWithMessage(message: any, id = 0, shortDesc = '') {
     const popupEl: NgElement & WithProperties<MarkerPopupComponent> = document.createElement('popup-element') as any;
     // Listen to the close event
     popupEl.addEventListener('closed', () => document.body.removeChild(popupEl));
     popupEl.message = message;
+    popupEl.placeId = id;
+    popupEl.shortDesc = shortDesc;
     // Add to the DOM
     document.body.appendChild(popupEl);
     return popupEl;

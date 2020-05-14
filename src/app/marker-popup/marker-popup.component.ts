@@ -8,6 +8,9 @@ import { Component, OnInit, Input } from '@angular/core';
 export class MarkerPopupComponent implements OnInit {
 
   @Input() message = 'Default Pop-up Message.';
+  @Input() placeId: number;
+  @Input() shortDesc = 'Default Description.';
+
 
   constructor() { }
 
