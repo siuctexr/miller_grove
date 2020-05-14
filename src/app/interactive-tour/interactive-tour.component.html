@@ -12,8 +12,8 @@
   </div>
   <p>Panoroma view of {{place?.name}}..</p>
   <div class="iframe-div">
-    <iframe *ngIf="place" [src]="sanitizedUrl(place.panoroma_link)" allowfullscreen="true" frameborder="0"
-      scrolling="no" allow="vr;gyroscope;accelerometer" height="600" style="width:100%;border:none;"></iframe>
+    <iframe *ngIf="place" [src]="srcUrl" allowfullscreen="true" frameborder="0" scrolling="no"
+      allow="vr;gyroscope;accelerometer" height="600" style="width:100%;border:none;"></iframe>
   </div>
 
 

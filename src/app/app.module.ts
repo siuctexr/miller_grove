@@ -33,6 +33,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { NgxGalleryModule } from 'ngx-gallery-9';
 import { VisualNarrativeComponent } from './visual-narrative/visual-narrative.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { VisualNarrativeComponent } from './visual-narrative/visual-narrative.co
     MarkerPopupComponent,
     GalleryComponent,
     WalkThroughComponent,
-    VisualNarrativeComponent
+    VisualNarrativeComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

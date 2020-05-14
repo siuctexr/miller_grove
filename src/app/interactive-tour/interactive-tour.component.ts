@@ -11,6 +11,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class InteractiveTourComponent implements OnInit {
   place: Place;
+  srcUrl: any;
+
   constructor(
     private route: ActivatedRoute,
     private placesService: PlacesService,
@@ -33,6 +35,7 @@ export class InteractiveTourComponent implements OnInit {
       const allFinds = this.placesService.getObjects(places, 'id', id);
       if (allFinds) {
         this.place = allFinds[0];
+        this.srcUrl = this.sanitizedUrl(this.place.panoroma_link);
       }
 
     });

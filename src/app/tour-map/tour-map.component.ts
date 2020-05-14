@@ -73,7 +73,7 @@ export class TourMapComponent implements OnInit {
     });
 
     markers.forEach(m => {
-      m.marker.bindPopup(fl => this.createPopupComponentWithMessage(m.placeName));
+      m.marker.bindPopup(fl => this.createPopupComponentWithMessage(m.placeName, m.id));
       m.marker.addTo(map);
     });
 
@@ -82,6 +82,7 @@ export class TourMapComponent implements OnInit {
 
 
   public createPopupComponentWithMessage(message: any, id = 0, shortDesc = '') {
+
     const popupEl: NgElement & WithProperties<MarkerPopupComponent> = document.createElement('popup-element') as any;
     // Listen to the close event
     popupEl.addEventListener('closed', () => document.body.removeChild(popupEl));
