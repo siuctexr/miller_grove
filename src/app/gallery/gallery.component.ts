@@ -31,11 +31,12 @@ export class GalleryComponent implements OnInit {
       previewSwipe: true,
       previewFullscreen: true,
       previewKeyboardNavigation: true,
-      image: true, height: '400px'
+      image: true,
+      // height: '400px'
     },
     // { "breakpoint": 500, "width": "100%" }
-    { breakpoint: 500, width: '300px', height: '300px', thumbnailsColumns: 3 },
-    { breakpoint: 300, width: '100%', height: '200px', thumbnailsColumns: 2 },
+    { breakpoint: 500, width: '100%', height: '100px', thumbnailsColumns: 1 },
+    { breakpoint: 300, width: '100%', height: '100px', thumbnailsColumns: 1 },
   ];
 
   imageGallery: any[] = [];

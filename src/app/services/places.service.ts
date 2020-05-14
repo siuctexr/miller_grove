@@ -10,7 +10,7 @@ export class PlacesService {
     constructor(private httpService: HttpClient) { }
 
     getPlaces(): Observable<Place[]> {
-        return this.httpService.get<Place[]>('../../assets/jsons/places.json');
+        return this.httpService.get<Place[]>('https://siuctexr.github.io/mg/assets/jsons/places.json');
     }
 
     getObjects(obj, key, val) {
